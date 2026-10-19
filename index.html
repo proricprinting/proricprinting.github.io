@@ -10,6 +10,132 @@
 
     <style>
         
+/* FLOATING SOCIAL CONTACT BUTTON */
+.social-contact {
+    position: fixed;
+    right: 22px;
+    bottom: 82px;
+    z-index: 1100;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.social-contact-toggle {
+    width: 58px;
+    height: 58px;
+    border: none;
+    border-radius: 50%;
+    background: #1E3A5A;
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    transition: transform .2s, background .2s;
+}
+
+.social-contact-toggle:hover {
+    transform: translateY(-3px);
+    background: #284d76;
+}
+
+.social-contact-panel {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 72px;
+    width: 255px;
+    padding: 18px;
+    background: white;
+    border: 1px solid #e5eaf1;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(15, 23, 42, 0.18);
+}
+
+.social-contact-panel.open {
+    display: block;
+    animation: contactSlide .2s ease;
+}
+
+.social-contact-panel h3 {
+    color: #111827;
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.social-contact-panel p {
+    color: #6b7280;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.social-contact-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 9px;
+    color: #273449;
+    font-size: 14px;
+    font-weight: 700;
+    background: #f5f7fa;
+    transition: .2s;
+}
+
+.social-contact-link:hover {
+    background: #e8edf4;
+    transform: translateX(-2px);
+}
+
+.social-contact-link .social-icon {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: white;
+    font-size: 17px;
+}
+
+.viber-icon {
+    background: #7360f2;
+}
+
+.messenger-icon {
+    background: #087cff;
+}
+
+.whatsapp-icon {
+    background: #25a55b;
+}
+
+@keyframes contactSlide {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .social-contact {
+        right: 15px;
+        bottom: 78px;
+    }
+
+    .social-contact-toggle {
+        width: 54px;
+        height: 54px;
+    }
+
+    .social-contact-panel {
+        width: min(255px, calc(100vw - 30px));
+    }
+}
+
+        
 .logo-image {
     width: 48px;
     height: 48px;
@@ -1365,12 +1491,13 @@
                             <label for="serviceType">Printing Service *</label>
                             <select id="serviceType" name="serviceType" required>
                                 <option value="">Choose a service</option>
-                                <option>Business Cards</option>
-                                <option>Flyers and Brochures</option>
-                                <option>Posters and Banners</option>
-                                <option>Tarpaulin Printing</option>
-                                <option>Invitations and Event Materials</option>
+                                <option>Sales Invoice</option>
+                                <option>Service Invoice</option>
+                                <option>Delivery Receipt</option>
+                                <option>Acknowledgement Receipt</option>
+                                <option>Billing Statement</option>
                                 <option>Document Printing</option>
+                                <option>Quotations</option>
                                 <option>Other Printing Service</option>
                             </select>
                         </div>
@@ -1444,6 +1571,57 @@
 
     <button class="back-to-top" id="backToTop"
             aria-label="Back to top">↑</button>
+    
+<!-- FLOATING SOCIAL CONTACT MENU -->
+<div class="social-contact">
+
+    <div class="social-contact-panel" id="socialContactPanel"
+         aria-label="Choose a messaging app" aria-hidden="true">
+
+        <h3>Let's Talk!</h3>
+        <p>Choose how you'd like to contact ProRic.</p>
+
+        <a class="social-contact-link"
+           id="viberContact"
+           href="https://viber.me/YOUR_VIBER_NUMBER"
+           target="_blank"
+           rel="noopener noreferrer">
+            <span class="social-icon viber-icon">V</span>
+            <span>Message on Viber</span>
+        </a>
+
+        <a class="social-contact-link"
+           id="messengerContact"
+           href="https://m.me/YOUR_FACEBOOK_PAGE_USERNAME"
+           target="_blank"
+           rel="noopener noreferrer">
+            <span class="social-icon messenger-icon">M</span>
+            <span>Facebook Messenger</span>
+        </a>
+
+        <a class="social-contact-link"
+           id="whatsappContact"
+           href="https://wa.me/YOUR_WHATSAPP_NUMBER"
+           target="_blank"
+           rel="noopener noreferrer">
+            <span class="social-icon whatsapp-icon">W</span>
+            <span>Message on WhatsApp</span>
+        </a>
+
+    </div>
+
+    <button type="button"
+            class="social-contact-toggle"
+            id="socialContactToggle"
+            aria-label="Open messaging options"
+            aria-expanded="false"
+            aria-controls="socialContactPanel">
+        <span id="socialContactIcon">☏</span>
+    </button>
+
+</div>
+
+    
 
     <script>
         // =========================
@@ -1525,14 +1703,6 @@
         // =========================
         document.getElementById("currentYear").textContent =
             new Date().getFullYear();
-
-        
-        
-        
-
-
-
-
 
             // CHANGE THIS TO YOUR REAL BUSINESS EMAIL ADDRESS.
             const businessEmail = "proricprinting@gmail.com";
