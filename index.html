@@ -1393,9 +1393,8 @@
                     </button>
 
                     <p class="form-notice" id="formNotice" aria-live="polite">
-                        This demo prepares an email inquiry. It does not save
-                        orders to a database or send them automatically.
-                    </p>
+    Your inquiry will be submitted securely through our quotation form.
+</p>
                 </form>
 
             </div>
@@ -1520,6 +1519,7 @@
 
         
         
+        
         // =========================
         // QUOTATION FORM
         // =========================
@@ -1534,10 +1534,12 @@
 
             quoteButton.disabled = true;
             quoteButton.textContent = "Submitting...";
+
             formNotice.textContent =
                 "Submitting your quotation request. Please wait...";
             formNotice.style.color = "#1E3A5A";
         });
+
 
 
 
