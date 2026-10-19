@@ -136,6 +136,132 @@
 }
 
         
+/* FLOATING SOCIAL CONTACT BUTTON */
+.social-contact {
+    position: fixed;
+    right: 22px;
+    bottom: 82px;
+    z-index: 1100;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.social-contact-toggle {
+    width: 58px;
+    height: 58px;
+    border: none;
+    border-radius: 50%;
+    background: #1E3A5A;
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    transition: transform .2s, background .2s;
+}
+
+.social-contact-toggle:hover {
+    transform: translateY(-3px);
+    background: #284d76;
+}
+
+.social-contact-panel {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 72px;
+    width: 255px;
+    padding: 18px;
+    background: white;
+    border: 1px solid #e5eaf1;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(15, 23, 42, 0.18);
+}
+
+.social-contact-panel.open {
+    display: block;
+    animation: contactSlide .2s ease;
+}
+
+.social-contact-panel h3 {
+    color: #111827;
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.social-contact-panel p {
+    color: #6b7280;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.social-contact-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 9px;
+    color: #273449;
+    font-size: 14px;
+    font-weight: 700;
+    background: #f5f7fa;
+    transition: .2s;
+}
+
+.social-contact-link:hover {
+    background: #e8edf4;
+    transform: translateX(-2px);
+}
+
+.social-contact-link .social-icon {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: white;
+    font-size: 17px;
+}
+
+.viber-icon {
+    background: #7360f2;
+}
+
+.messenger-icon {
+    background: #087cff;
+}
+
+.whatsapp-icon {
+    background: #25a55b;
+}
+
+@keyframes contactSlide {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .social-contact {
+        right: 15px;
+        bottom: 78px;
+    }
+
+    .social-contact-toggle {
+        width: 54px;
+        height: 54px;
+    }
+
+    .social-contact-panel {
+        width: min(255px, calc(100vw - 30px));
+    }
+}
+
+        
 .logo-image {
     width: 48px;
     height: 48px;
@@ -1042,6 +1168,36 @@
                 transition-duration: .01ms !important;
             }
         }
+        
+/* FLOATING SOCIAL CONTACT MENU */
+const socialToggle = document.getElementById("socialContactToggle");
+const socialPanel = document.getElementById("socialContactPanel");
+const socialIcon = document.getElementById("socialContactIcon");
+
+socialToggle.addEventListener("click", function () {
+    const isOpen = socialPanel.classList.toggle("open");
+
+    socialToggle.setAttribute("aria-expanded", String(isOpen));
+    socialToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close messaging options" : "Open messaging options"
+    );
+
+    socialPanel.setAttribute("aria-hidden", String(!isOpen));
+    socialIcon.textContent = isOpen ? "×" : "☏";
+});
+
+// Close the menu when clicking outside it.
+document.addEventListener("click", function (event) {
+    if (!event.target.closest(".social-contact")) {
+        socialPanel.classList.remove("open");
+        socialToggle.setAttribute("aria-expanded", "false");
+        socialToggle.setAttribute("aria-label", "Open messaging options");
+        socialPanel.setAttribute("aria-hidden", "true");
+        socialIcon.textContent = "☏";
+    }
+});
+
     </style>
 </head>
 
