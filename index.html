@@ -1,0 +1,1591 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ProRic | Professional Printing Services</title>
+    <meta name="description" content="Professional printing services for businesses, events, and individuals. Contact us for a printing quotation.">
+
+    <style>
+        
+.logo-image {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+        /* =========================
+           1. GLOBAL SETTINGS
+        ========================== */
+        :root {
+            --primary: #1E3A5A;
+            --primary-dark: #1E3A5A;
+            --dark: #111827;
+            --dark-soft: #1f2937;
+            --text: #273449;
+            --muted: #6b7280;
+            --light: #f5f7fa;
+            --white: #ffffff;
+            --border: #e5eaf1;
+            --radius: 16px;
+            --shadow: 0 15px 40px rgba(15, 23, 42, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        button, input, textarea, select {
+            font: inherit;
+        }
+
+        button, a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .container {
+            width: min(1160px, 90%);
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-heading {
+            max-width: 650px;
+            text-align: center;
+            margin: 0 auto 52px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .section-heading h2,
+        .about-content h2,
+        .contact-info h2 {
+            color: var(--dark);
+            font-size: clamp(28px, 4vw, 42px);
+            line-height: 1.2;
+            letter-spacing: -1.2px;
+            margin-bottom: 16px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 13px 22px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            background: var(--primary);
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border-color: rgba(255,255,255,.55);
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--dark);
+        }
+
+        /* =========================
+           2. NAVIGATION
+        ========================== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--dark);
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            white-space: nowrap;
+        }
+
+        .logo-icon {
+            color: var(--primary);
+            font-size: 30px;
+        }
+
+        .logo span:last-child span {
+            color: var(--primary);
+        }
+
+        .logo small {
+            display: block;
+            font-size: 9px;
+            line-height: 1.2;
+            letter-spacing: 3px;
+            font-weight: 700;
+            color: var(--muted);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #465166;
+            font-size: 13px;
+            font-weight: 700;
+            transition: color .2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            padding: 11px 17px;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: 0;
+            font-size: 28px;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* =========================
+           3. HERO SECTION
+        ========================== */
+        .hero {
+            min-height: 610px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            background:
+                linear-gradient(90deg,
+                    rgba(10, 17, 28, .96) 0%,
+                    rgba(10, 17, 28, .86) 42%,
+                    rgba(10, 17, 28, .24) 100%),
+                url(header.jpg)
+                center / cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            padding: 95px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .eyebrow {
+            color: #9dc5ff;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 76px);
+            line-height: 1.06;
+            letter-spacing: -3px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            color: #4d98ff;
+        }
+
+        .hero p {
+            max-width: 520px;
+            color: #d3dbe7;
+            font-size: 17px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+        }
+
+        .hero-note {
+            margin-top: 38px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            color: #e5eaf2;
+            font-size: 12px;
+        }
+
+        .hero-note span::before {
+            content: "✓";
+            color: #69a7ff;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+
+        /* =========================
+           4. TRUST BAR
+        ========================== */
+        .trust-bar {
+            border-bottom: 1px solid var(--border);
+            background: white;
+        }
+
+        .trust-inner {
+            min-height: 105px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            align-items: center;
+            gap: 25px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .trust-icon {
+            width: 43px;
+            height: 43px;
+            display: grid;
+            place-items: center;
+            background: #edf4ff;
+            color: var(--primary);
+            border-radius: 12px;
+            font-size: 21px;
+        }
+
+        .trust-item strong {
+            display: block;
+            color: var(--dark);
+            font-size: 13px;
+        }
+
+        .trust-item small {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        /* =========================
+           5. SERVICES
+        ========================== */
+        .services {
+            background: var(--light);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .service-card {
+            padding: 30px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: .3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+            border-color: #c9dcff;
+        }
+
+        .service-icon {
+            width: 54px;
+            height: 54px;
+            display: grid;
+            place-items: center;
+            background: #edf4ff;
+            border-radius: 14px;
+            font-size: 26px;
+            margin-bottom: 22px;
+        }
+
+        .service-card h3 {
+            font-size: 18px;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .text-link {
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .text-link:hover {
+            color: var(--primary-dark);
+        }
+
+        /* =========================
+           6. ABOUT
+        ========================== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-image {
+            min-height: 450px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            background: #dce4ef;
+        }
+
+        .about-image img {
+            position: absolute;
+            inset: 0;
+            height: 100%;
+        }
+
+        .about-badge {
+            position: absolute;
+            bottom: 22px;
+            left: 22px;
+            padding: 18px 22px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .about-badge strong {
+            display: block;
+            color: var(--dark);
+            font-size: 17px;
+        }
+
+        .about-badge span {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .about-content > p {
+            color: var(--muted);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 28px 0;
+        }
+
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .feature-icon {
+            color: var(--primary);
+            font-size: 22px;
+        }
+
+        .feature strong {
+            display: block;
+            color: var(--dark);
+            font-size: 13px;
+        }
+
+        .feature small {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* =========================
+           7. PORTFOLIO
+        ========================== */
+        .portfolio {
+            background: var(--light);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .portfolio-card {
+            overflow: hidden;
+            border-radius: var(--radius);
+            background: white;
+            border: 1px solid var(--border);
+        }
+
+        .portfolio-card img {
+            height: 245px;
+            transition: transform .4s;
+        }
+
+        .portfolio-card:hover img {
+            transform: scale(1.04);
+        }
+
+        .portfolio-card .portfolio-info {
+            padding: 22px;
+        }
+
+        .portfolio-info small {
+            color: var(--primary);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 800;
+        }
+
+        .portfolio-info h3 {
+            margin-top: 5px;
+            color: var(--dark);
+            font-size: 17px;
+        }
+
+        /* =========================
+           8. HOW IT WORKS
+        ========================== */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .step-number {
+            width: 55px;
+            height: 55px;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: var(--dark);
+            color: white;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .step h3 {
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* =========================
+           9. QUOTE / CONTACT
+        ========================== */
+        .contact {
+            background: var(--dark);
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 65px;
+            align-items: start;
+        }
+
+        .contact .eyebrow {
+            color: #8abaff;
+        }
+
+        .contact-info h2 {
+            color: white;
+        }
+
+        .contact-info > p {
+            color: #bac5d4;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        .contact-detail {
+            display: flex;
+            gap: 14px;
+            margin: 22px 0;
+        }
+
+        .contact-detail .contact-symbol {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            border-radius: 12px;
+            background: #273449;
+            color: #8abaff;
+        }
+
+        .contact-detail strong {
+            display: block;
+            font-size: 13px;
+        }
+
+        .contact-detail span {
+            display: block;
+            color: #bac5d4;
+            font-size: 13px;
+            overflow-wrap: anywhere;
+        }
+
+        .quote-form {
+            padding: 34px;
+            border-radius: 18px;
+            background: white;
+            color: var(--text);
+        }
+
+        .quote-form h3 {
+            font-size: 24px;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .form-intro {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 24px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            color: var(--dark);
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 13px;
+            border: 1px solid #dce2eb;
+            border-radius: 8px;
+            background: #fbfcfe;
+            outline: none;
+            color: var(--text);
+            font-size: 13px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(36,120,245,.1);
+        }
+
+        .form-group textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .quote-form .btn {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .form-notice {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 12px;
+        }
+
+        /* =========================
+           10. FOOTER
+        ========================== */
+        .footer {
+            background: #0b111b;
+            color: #bac5d4;
+            padding: 35px 0 20px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+            padding-bottom: 25px;
+        }
+
+        .footer .logo {
+            color: white;
+        }
+
+        .footer .logo small {
+            color: #bac5d4;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px;
+            font-size: 12px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #263141;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        /* =========================
+           11. BACK TO TOP
+        ========================== */
+        .back-to-top {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            width: 45px;
+            height: 45px;
+            display: grid;
+            place-items: center;
+            background: var(--primary);
+            color: white;
+            border: 0;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: .25s;
+            z-index: 900;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* =========================
+           12. RESPONSIVE DESIGN
+        ========================== */
+        @media (max-width: 900px) {
+            .nav-links {
+                gap: 17px;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .service-grid,
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-image {
+                min-height: 380px;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .section {
+                padding: 70px 0;
+            }
+
+            .nav-inner {
+                min-height: 70px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                padding: 18px 5% 24px;
+                background: white;
+                border-bottom: 1px solid var(--border);
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 12px 0;
+            }
+
+            .hero {
+                min-height: 570px;
+                background-position: 58% center;
+            }
+
+            .hero-content {
+                padding: 75px 0;
+            }
+
+            .hero h1 {
+                letter-spacing: -1.7px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .trust-inner {
+                grid-template-columns: 1fr;
+                padding: 24px 0;
+                gap: 20px;
+            }
+
+            .trust-item {
+                justify-content: flex-start;
+            }
+
+            .service-grid,
+            .portfolio-grid,
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                padding: 25px;
+            }
+
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-card img {
+                height: 230px;
+            }
+
+            .quote-form {
+                padding: 23px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .footer-top {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .footer-links {
+                gap: 15px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header class="navbar">
+        <div class="container nav-inner">
+
+            <a href="#home" class="logo" aria-label="ProRic home">
+                
+<img src="logo.jpg" alt="Printing Press Logo" class="logo-image">
+
+                <span>
+                    Pro<span>Ric</span>
+                    <small>PRINTING PRESS</small>
+                </span>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Our Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <a href="#contact" class="btn nav-cta">Get a Quote ↗</a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="eyebrow">Quality printing. Professional results.</span>
+
+                    <h1>
+                        Your Ideas.<br>
+                        <span>Our Prints.</span>
+                    </h1>
+
+                    <p>
+                        From business cards to large-format prints, we bring
+                        your ideas to life with quality materials, sharp details,
+                        and reliable printing services.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn">Request a Quote →</a>
+                        <a href="#services" class="btn btn-outline">
+                            Explore Services
+                        </a>
+                    </div>
+
+                    <div class="hero-note">
+                        <span>Quality materials</span>
+                        <span>Careful finishing</span>
+                        <span>Personal service</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRUST BAR -->
+        <section class="trust-bar" aria-label="Our service commitments">
+            <div class="container trust-inner">
+                <div class="trust-item">
+                    <div class="trust-icon">✦</div>
+                    <div>
+                        <strong>Quality You Can See</strong>
+                        <small>Sharp and professional results</small>
+                    </div>
+                </div>
+
+                <div class="trust-item">
+                    <div class="trust-icon">◷</div>
+                    <div>
+                        <strong>Reliable Service</strong>
+                        <small>Clear communication on every order</small>
+                    </div>
+                </div>
+
+                <div class="trust-item">
+                    <div class="trust-icon">◇</div>
+                    <div>
+                        <strong>Solutions for Every Need</strong>
+                        <small>For businesses and individuals</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section class="section services" id="services">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">What we do</span>
+                    <h2>Printing Solutions for Every Idea</h2>
+                    <p>
+                        Whether you're promoting a business, preparing for an
+                        event, or printing everyday materials, we can help.
+                    </p>
+                </div>
+
+                <div class="service-grid">
+
+                    <article class="service-card">
+                        <div class="service-icon">▤</div>
+                        <h3>Business Cards</h3>
+                        <p>
+                            Leave a lasting mark with custom-designed business cards 
+                            featuring premium finishes, crisp typography, 
+                            and high quality cardstock.
+                        </p>
+                        <a href="#contact" class="text-link"
+                           data-service="Business Cards">Request pricing →</a>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon">▧</div>
+                        <h3>Flyers & Brochures</h3>
+                        <p>
+                            Grab attention and communicate your message clearly 
+                            using high impact flyers and multi-fold brochures.
+                        </p>
+                        <a href="#contact" class="text-link"
+                           data-service="Flyers and Brochures">Request pricing →</a>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon">▣</div>
+                        <h3>Calendars</h3>
+                        <p>
+                            Stay top of mind every day with personalized yearly calendars, 
+                            perfect for corporate gifting and brand promotion.
+                        </p>
+                        <a href="#contact" class="text-link"
+                           data-service="Posters and Banners">Request pricing →</a>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon">▥</div>
+                        <h3>Official Receipts</h3>
+                        <p>
+                            Keep your transactions organized with custom printed 
+                            carbonless official receipts, sales invoices, and billing forms.
+                        </p>
+                        <a href="#contact" class="text-link"
+                           data-service="Tarpaulin Printing">Request pricing →</a>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon">✉</div>
+                        <h3>Other Materials</h3>
+                        <p>
+                            Bring any project to life with personalized invitations, 
+                            certificates, event stationery, and custom prints.
+                        </p>
+                        <a href="#contact" class="text-link"
+                           data-service="Invitations and Event Materials">Request pricing →</a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="section" id="about">
+            <div class="container about-grid">
+
+                <div class="about-image">
+                    
+<img
+    src="1.jpg"
+    alt="ProRic Printing Press business and printing services"
+    loading="lazy">
+
+
+                    <div class="about-badge">
+                        <strong>Ideas into reality.</strong>
+                        <span>One print at a time.</span>
+                    </div>
+                </div>
+
+                <div class="about-content">
+                    <span class="eyebrow">About our business</span>
+
+                    <h2>Your Trusted Printing Partner</h2>
+
+                    <p>
+                        We believe every print represents an idea, a business,
+                        or a special moment. Our goal is to help customers
+                        turn those ideas into printed materials they can be
+                        proud of.
+                    </p>
+
+                    <p>
+                        From small personal projects to business printing
+                        needs, we focus on quality, friendly service, and
+                        attention to detail throughout the process.
+                    </p>
+
+                    <div class="feature-list">
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            <div>
+                                <strong>Quality Focused</strong>
+                                <small>Care in every detail</small>
+                            </div>
+                        </div>
+
+                        <div class="feature">
+                            <span class="feature-icon">↗</span>
+                            <div>
+                                <strong>Dependable Service</strong>
+                                <small>Communication you can count on</small>
+                            </div>
+                        </div>
+
+                        <div class="feature">
+                            <span class="feature-icon">◇</span>
+                            <div>
+                                <strong>Flexible Solutions</strong>
+                                <small>Options for different projects</small>
+                            </div>
+                        </div>
+
+                        <div class="feature">
+                            <span class="feature-icon">◎</span>
+                            <div>
+                                <strong>Customer First</strong>
+                                <small>Your needs guide our work</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="btn">Let's Work Together →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTFOLIO -->
+        <section class="section portfolio" id="portfolio">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">Selected work</span>
+                    <h2>Print That Makes an Impression</h2>
+                    <p>
+                        Explore examples of printed materials that can inspire
+                        your next project. Replace these sample images with
+                        photos of your actual work.
+                    </p>
+                </div>
+
+                <div class="portfolio-grid">
+
+                    <article class="portfolio-card">
+                        <img
+                            src="resibo.jpg"
+                            alt="Business stationery and printed cards"
+                            loading="lazy">
+                        <div class="portfolio-info">
+                            <small>Business Printing</small>
+                            <h3>Official Receipts</h3>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card">
+                        <img
+                            src="calendar.jpg"
+                            alt="Printed notebook and paper goods"
+                            loading="lazy">
+                        <div class="portfolio-info">
+                            <small>Paper Products</small>
+                            <h3>Calendar Design</h3>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card">
+                        <img
+                            src="bro.jpg"
+                            alt="Creative printed publications"
+                            loading="lazy">
+                        <div class="portfolio-info">
+                            <small>Creative Printing</small>
+                            <h3>Brochure Design</h3>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section class="section">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">Simple process</span>
+                    <h2>From Idea to Finished Print</h2>
+                    <p>
+                        Getting started is easy. Tell us what you need,
+                        review the details, and let us help with the rest.
+                    </p>
+                </div>
+
+                <div class="steps-grid">
+                    <article class="step">
+                        <div class="step-number">01</div>
+                        <h3>Tell Us Your Idea</h3>
+                        <p>
+                            Share your design, preferred size, quantity,
+                            materials, and deadline.
+                        </p>
+                    </article>
+
+                    <article class="step">
+                        <div class="step-number">02</div>
+                        <h3>Receive a Quotation</h3>
+                        <p>
+                            We'll discuss your requirements, pricing,
+                            and the available printing options.
+                        </p>
+                    </article>
+
+                    <article class="step">
+                        <div class="step-number">03</div>
+                        <h3>Print, Collect or Deliver</h3>
+                        <p>
+                            Once the details are confirmed, your printing
+                            order can move forward.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT AND QUOTE FORM -->
+        <section class="section contact" id="contact">
+            <div class="container contact-grid">
+
+                <div class="contact-info">
+                    <span class="eyebrow">Let's talk printing</span>
+                    <h2>Have a Project in Mind?</h2>
+
+                    <p>
+                        Tell us what you need printed. Send your inquiry
+                        and we'll have the details ready to discuss.
+                    </p>
+
+                    <!-- REPLACE THESE SAMPLE CONTACT DETAILS -->
+                    <div class="contact-detail">
+                        <div class="contact-symbol">⌖</div>
+                        <div>
+                            <strong>Visit Our Shop</strong>
+                            <span>Anthurium Street, Anak Pawis 2, Brgy San Andres, Cainta, Rizal</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <div class="contact-symbol">☎</div>
+                        <div>
+                            <strong>Call or Text</strong>
+                            <span>0948-847-7621 / 0960-209-4171</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <div class="contact-symbol">✉</div>
+                        <div>
+                            <strong>Email Us</strong>
+                            <span>proricprinting@gmail.com</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail">
+                        <div class="contact-symbol">◷</div>
+                        <div>
+                            <strong>Business Hours</strong>
+                            <span>Monday - Saturday: 8:00 AM - 5:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+
+                
+<form class="quote-form" id="quoteForm"
+      action="https://formsubmit.co/proricprinting@gmail.com"
+      method="POST">
+
+      
+    <input type="hidden" name="_subject"
+           value="New ProRic Printing Quotation Request">
+
+    <input type="hidden" name="_template" value="table">
+
+
+                    
+                    <h3>Request a Quotation</h3>
+                    <p class="form-intro">
+                        Complete the details below to prepare your inquiry.
+                    </p>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="customerName">Full Name *</label>
+                            <input type="text" id="customerName"
+                                   name="customerName"
+                                   placeholder="Your name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customerEmail">Email Address *</label>
+                            <input type="email" id="customerEmail"
+                                   name="customerEmail"
+                                   placeholder="you@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customerPhone">Phone Number</label>
+                            <input type="tel" id="customerPhone"
+                                   name="customerPhone"
+                                   placeholder="Your contact number">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="serviceType">Printing Service *</label>
+                            <select id="serviceType" name="serviceType" required>
+                                <option value="">Choose a service</option>
+                                <option>Business Cards</option>
+                                <option>Flyers and Brochures</option>
+                                <option>Posters and Banners</option>
+                                <option>Tarpaulin Printing</option>
+                                <option>Invitations and Event Materials</option>
+                                <option>Document Printing</option>
+                                <option>Other Printing Service</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="quantity">Estimated Quantity</label>
+                            <input type="number" id="quantity"
+                                   name="quantity" min="1"
+                                   placeholder="e.g. 100">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deadline">Preferred Deadline</label>
+                            <input type="date" id="deadline" name="deadline">
+                        </div>
+
+                        <div class="form-group full">
+                            <label for="projectDetails">Project Details *</label>
+                            <textarea id="projectDetails"
+                                      name="projectDetails"
+                                      placeholder="Describe the size, material, design, quantity, or other requirements..."
+                                      required></textarea>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="btn">
+                        Prepare My Inquiry →
+                    </button>
+
+                    <p class="form-notice" id="formNotice" aria-live="polite">
+                        This demo prepares an email inquiry. It does not save
+                        orders to a database or send them automatically.
+                    </p>
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+
+            <div class="footer-top">
+                <a href="#home" class="logo">
+                    
+<img src="logo.jpg" alt="Printing Press Logo" class="logo-image">
+
+                    <span>
+                        Print<span>Pro</span>
+                        <small>PRINTING PRESS</small>
+                    </span>
+                </a>
+
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#portfolio">Our Work</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                © <span id="currentYear"></span> ProRic Printing Press.
+                All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop"
+            aria-label="Back to top">↑</button>
+
+    <script>
+        // =========================
+        // MOBILE NAVIGATION
+        // =========================
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", function () {
+            const isOpen = navLinks.classList.toggle("open");
+
+            menuToggle.setAttribute("aria-expanded", isOpen);
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation menu" : "Open navigation menu"
+            );
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+        });
+
+        // Close the mobile menu after choosing a section.
+        document.querySelectorAll("#navLinks a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("open");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Open navigation menu");
+                menuToggle.textContent = "☰";
+            });
+        });
+
+        // =========================
+        // ACTIVE NAVIGATION LINK
+        // =========================
+        const sections = document.querySelectorAll("main section[id]");
+        const navItems = document.querySelectorAll("#navLinks a");
+
+        function updateActiveLink() {
+            let currentSection = "home";
+
+            sections.forEach(function (section) {
+                if (window.scrollY >= section.offsetTop - 140) {
+                    currentSection = section.id;
+                }
+            });
+
+            navItems.forEach(function (link) {
+                link.classList.toggle(
+                    "active",
+                    link.getAttribute("href") === "#" + currentSection
+                );
+            });
+        }
+
+        // =========================
+        // BACK TO TOP BUTTON
+        // =========================
+        const backToTop = document.getElementById("backToTop");
+
+        window.addEventListener("scroll", function () {
+            backToTop.classList.toggle("visible", window.scrollY > 400);
+            updateActiveLink();
+        });
+
+        backToTop.addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        // =========================
+        // AUTO-SELECT SERVICE
+        // =========================
+        document.querySelectorAll("[data-service]").forEach(function (link) {
+            link.addEventListener("click", function () {
+                document.getElementById("serviceType").value =
+                    link.dataset.service;
+            });
+        });
+
+        // =========================
+        // SET CURRENT YEAR
+        // =========================
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+
+        
+        
+        // =========================
+        // QUOTATION FORM
+        // =========================
+        const quoteForm = document.getElementById("quoteForm");
+        const formNotice = document.getElementById("formNotice");
+        const quoteButton = quoteForm.querySelector('button[type="submit"]');
+
+        quoteForm.addEventListener("submit", function () {
+            if (!quoteForm.checkValidity()) {
+                return;
+            }
+
+            quoteButton.disabled = true;
+            quoteButton.textContent = "Submitting...";
+            formNotice.textContent =
+                "Submitting your quotation request. Please wait...";
+            formNotice.style.color = "#1E3A5A";
+        });
+
+
+
+            // CHANGE THIS TO YOUR REAL BUSINESS EMAIL ADDRESS.
+            const businessEmail = "proricprinting@gmail.com";
+
+            if (businessEmail === "proricprinting@gmail.com") {
+                formNotice.textContent =
+                    "Please replace yourbusiness@example.com in the JavaScript " +
+                    "with your real business email before using this form.";
+                formNotice.style.color = "#b42318";
+                return;
+            }
+
+            const formData = new FormData(quoteForm);
+
+            const name = formData.get("customerName");
+            const email = formData.get("customerEmail");
+            const phone = formData.get("customerPhone") || "Not provided";
+            const service = formData.get("serviceType");
+            const quantity = formData.get("quantity") || "Not specified";
+            const deadline = formData.get("deadline") || "Not specified";
+            const details = formData.get("projectDetails");
+
+            const subject = encodeURIComponent(
+                "Printing Quotation Request - " + service
+            );
+
+            const body = encodeURIComponent(
+                "PRINTING QUOTATION REQUEST\n\n" +
+                "Customer: " + name + "\n" +
+                "Email: " + email + "\n" +
+                "Phone: " + phone + "\n" +
+                "Service: " + service + "\n" +
+                "Quantity: " + quantity + "\n" +
+                "Preferred deadline: " + deadline + "\n\n" +
+                "Project details:\n" + details
+            );
+
+            formNotice.textContent =
+                "Your email application will open. Review the inquiry and press " +
+                "Send to submit it.";
+
+            window.location.href =
+                "mailto:" + businessEmail +
+                "?subject=" + subject + "&body=" + body;
+        });
+    </script>
+
+</body>
+</html>
