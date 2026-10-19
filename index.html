@@ -1529,24 +1529,7 @@
         
         
         
-        // =========================
-        // QUOTATION FORM
-        // =========================
-        const quoteForm = document.getElementById("quoteForm");
-        const formNotice = document.getElementById("formNotice");
-        const quoteButton = quoteForm.querySelector('button[type="submit"]');
 
-        quoteForm.addEventListener("submit", function () {
-            if (!quoteForm.checkValidity()) {
-                return;
-            }
-
-            quoteButton.disabled = true;
-            quoteButton.textContent = "Submitting...";
-
-            formNotice.textContent =
-                "Submitting your quotation request. Please wait...";
-            formNotice.style.color = "#1E3A5A";
 
 
 
